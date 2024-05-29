@@ -19,5 +19,15 @@ categories = [category.text.strip() for category in cat_div.children if category
 
 save_file("categories.txt", ",\n".join(categories))
 
+articles = soup.find("section").find_all("article", class_="product_pod")
+images = []
+titles = []
+for article in articles:
+    img = article.find("img").get("src")
+    images.append(img)
 
+    title = article.find("h3").find("a").get("title")
+    titles.append(title)
 
+save_file("images.txt", ",\n".join(images))
+save_file("titles.txt", ",\n".join(titles))
