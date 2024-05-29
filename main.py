@@ -16,5 +16,8 @@ save_file("html_content.txt", soup.prettify())
 cat_div = soup.find("div", class_="side_categories").find("ul").find("li").find("ul")
 
 categories = [category.text.strip() for category in cat_div.children if category.name]
-pprint(categories)
+
+save_file("categories.txt", ",\n".join(categories))
+
+
 
